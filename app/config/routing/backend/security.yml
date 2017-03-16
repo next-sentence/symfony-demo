@@ -1,0 +1,15 @@
+app_backend_login:
+    path: /login
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend/Security:login
+
+app_backend_login_check:
+    path: /login-check
+    methods: [POST]
+    defaults:
+        _controller: AppBundle:Backend/Security:check
+
+app_backend_logout:
+    path: /logout
+    methods: [GET]

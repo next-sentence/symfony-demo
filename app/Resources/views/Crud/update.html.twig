@@ -1,0 +1,23 @@
+{% extends ':Backend:layout.html.twig' %}
+
+{% import ':Common/Macro:headers.html.twig' as headers %}
+{% import ':Common/Macro:buttons.html.twig' as buttons %}
+{% import "SbSAdminLTEBundle:Layout:main_macros.html.twig" as macros %}
+
+{% set header = configuration.vars.header|default(metadata.applicationName~'.ui.edit_'~metadata.name) %}
+
+{% block title %}{{ header|trans }}{% endblock %}
+
+{#{% form_theme form ':Common/Form:theme.html.twig' %}#}
+
+{% block header_content %}
+    {% include ':Crud/Update:_header.html.twig' %}
+{% endblock %}
+
+{% block admin_lte_breadcrumb %}
+    {% include ':Crud/Update:_breadcrumb.html.twig' %}
+{% endblock %}
+
+{% block page_content %}
+    {% include ':Crud/Update:_content.html.twig' %}
+{% endblock %}

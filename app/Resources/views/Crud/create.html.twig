@@ -1,0 +1,21 @@
+{% extends ':Backend:layout.html.twig' %}
+
+{% import ':Common/Macro:headers.html.twig' as headers %}
+
+{% set header = configuration.vars.header|default(metadata.applicationName~'.ui.new_'~metadata.name) %}
+
+{% block title %}{{ header|trans }}{% endblock %}
+
+{#{% form_theme form ':Common/Form:theme.html.twig' %}#}
+
+{% block header_content %}
+    {% include ':Crud/Create:_header.html.twig' %}
+{% endblock %}
+
+{% block admin_lte_breadcrumb %}
+    {% include ':Crud/Create:_breadcrumb.html.twig' %}
+{% endblock %}
+
+{% block page_content %}
+    {% include ':Crud/Create:_content.html.twig' %}
+{% endblock %}

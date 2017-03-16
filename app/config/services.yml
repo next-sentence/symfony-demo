@@ -1,0 +1,26 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    app.user_listener:
+        class: AppBundle\EventListener\UserEventListener
+        arguments: ["@security.token_storage"]
+        tags:
+            - { name: kernel.event_listener, event: sbs.admin_lte.user, method: onShowUser }
+
+    app.tasks_listener:
+        class: AppBundle\EventListener\TaskListEventListener
+        tags:
+            - { name: kernel.event_listener, event: sbs.admin_lte.tasks, method: onListTasks }
+
+    app.notifications_listener:
+        class: AppBundle\EventListener\NotificationListEventListener
+        tags:
+            - { name: kernel.event_listener, event: sbs.admin_lte.notifications, method: onListNotifications }
+
+    app.sidebar_menu_listener:
+        class: AppBundle\EventListener\SidebarMenuEventListener
+        tags:
+            - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }

@@ -1,0 +1,4 @@
+sylius:
+    ui:
+        administration: Dashboard
+        backend_users: Users

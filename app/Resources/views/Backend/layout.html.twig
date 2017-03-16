@@ -1,0 +1,17 @@
+{% extends 'SbSAdminLTEBundle:Layout:base.html.twig' %}
+
+{% block title %}Fyb Tools{% endblock %}
+{% block admin_lte_logo %}
+  <a href="#" class="logo">
+      <span class="logo-mini"><i class="fa fa-lg fa-home"></i></span>
+      <span class="logo-lg"><b>Dashboard</b></span>
+  </a>
+{% endblock %}
+
+ {% block admin_lte_footer %}
+     <footer class="main-footer">
+         <div class="pull-right hidden-xs"><b>Version</b> 1.0.0</div>
+         <strong>Copyright &copy; {{ "now"|date("Y") }} <a href="{{ path('app_frontend_homepage') }}">Homepage</a>.</strong>
+         All rights reserved.
+     </footer>
+ {% endblock %}

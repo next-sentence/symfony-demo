@@ -1,0 +1,10 @@
+app_frontend:
+    resource: "routing/frontend/main.yml"
+
+app_backend:
+    resource: "routing/backend/main.yml"
+    prefix: /backend
+
+#app_api:
+#    resource: "routing/api/main.yml"
+#    prefix: /api

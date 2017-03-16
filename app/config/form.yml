@@ -1,0 +1,21 @@
+parameters:
+    #parameter_name: value
+
+services:
+    app.form.type.page:
+        class: AppBundle\Form\Type\PageType
+        arguments: ["%app.model.page.class%", ["default"]]
+        tags:
+            - { name: form.type, alias: app_page }
+
+    app.form.type.block:
+        class: AppBundle\Form\Type\BlockType
+        arguments: ["%app.model.block.class%", ["default"]]
+        tags:
+            - { name: form.type, alias: app_block }
+
+    sylius.form.type.backend_user:
+        class: AppBundle\Form\Type\UserType
+        arguments: ["%sylius.model.backend_user.class%", ["sylius"]]
+        tags:
+            - { name: form.type, alias: sylis_backend_user }

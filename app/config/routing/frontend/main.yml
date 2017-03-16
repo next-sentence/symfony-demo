@@ -1,0 +1,7 @@
+app_frontend_homepage:
+    methods: [GET]
+    path: /
+    defaults: { _controller: AppBundle:Frontend/Homepage:main }
+
+app_frontend_security:
+    resource: "security.yml"

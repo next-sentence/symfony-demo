@@ -1,0 +1,12 @@
+sylius_resource:
+    resources:
+        app.page:
+            driver: doctrine/orm
+            classes:
+                model: AppBundle\Entity\Page
+                form: AppBundle\Form\Type\PageType
+        app.block:
+            driver: doctrine/orm
+            classes:
+                model: AppBundle\Entity\Block
+                form: AppBundle\Form\Type\BlockType

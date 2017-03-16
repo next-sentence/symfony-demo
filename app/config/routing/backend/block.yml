@@ -1,0 +1,13 @@
+app_backend_block:
+    resource: |
+        alias: app.block
+        section: backend
+        templates: :Crud
+        except: ['show']
+        redirect: index
+        grid: app_backend_block
+        vars:
+            all:
+                subheader: app.ui.user
+
+    type: sylius.resource

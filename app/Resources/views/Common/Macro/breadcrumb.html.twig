@@ -1,0 +1,18 @@
+{% macro crumble(crumbs = {}, root_path, root_label) %}
+    <ol class="breadcrumb">
+        {% for crumb in crumbs %}
+            {% if loop.first %}
+                <li><a href="{{ crumb.url }}"><i class="fa fa-dashboard"></i> {{ crumb.label }}</a></li>
+            {% elseif crumb.url is defined %}
+                <li><a href="{{ crumb.url }}" class="section">{{ crumb.label }}</a></li>
+            {% else %}
+                <li class="active">{{ crumb.label }}</li>
+            {% endif %}
+        {% else %}
+            <li>
+                <a href="{{ root_url|default('/') }}" class="section">{{ root_label|default('sylius.ui.root'|trans) }}</a>
+            </li>
+        {% endfor %}
+
+    </ol>
+{% endmacro %}

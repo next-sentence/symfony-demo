@@ -1,0 +1,90 @@
+sylius_user:
+    driver: doctrine/orm
+    resources:
+        backend:
+            user:
+                classes:
+                    model: AppBundle\Entity\User
+                    repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
+                    form: AppBundle\Form\Type\UserType
+                    interface: Sylius\Component\User\Model\UserInterface
+                    controller: Sylius\Bundle\UserBundle\Controller\UserController
+                    factory: Sylius\Component\Resource\Factory\Factory
+#                templates: 'SyliusUserBundle:User'
+                resetting:
+                    token:
+                        ttl: P1D
+                        length: 16
+                        field_name: passwordResetToken
+                    pin:
+                        length: 4
+                        field_name: passwordResetToken
+                verification:
+                    token:
+                        length: 16
+                        field_name: emailVerificationToken
+        frontend:
+            user:
+                classes:
+                    model: AppBundle\Entity\User
+                    repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
+                    form: AppBundle\Form\Type\UserType
+                    interface: Sylius\Component\User\Model\UserInterface
+                    controller: Sylius\Bundle\UserBundle\Controller\UserController
+                    factory: Sylius\Component\Resource\Factory\Factory
+#                templates: 'SyliusUserBundle:User'
+                resetting:
+                    token:
+                        ttl: P1D
+                        length: 16
+                        field_name: passwordResetToken
+                    pin:
+                        length: 4
+                        field_name: passwordResetToken
+                verification:
+                    token:
+                        length: 16
+                        field_name: emailVerificationToken
+        oauth:
+            user:
+                classes:
+                    model: Sylius\Component\User\Model\UserOAuth
+                    interface: Sylius\Component\User\Model\UserOAuthInterface
+                    controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+                    factory: Sylius\Component\Resource\Factory\Factory
+                    form: Sylius\Bundle\UserBundle\Form\Type\UserType
+#                templates: 'SyliusUserBundle:User'
+                resetting:
+                    token:
+                        ttl: P1D
+                        length: 16
+                        field_name: passwordResetToken
+                    pin:
+                        length: 4
+                        field_name: passwordResetToken
+                verification:
+                    token:
+                        length: 16
+                        field_name: emailVerificationToken
+
+sylius_mailer:
+    sender:
+        name: My website
+        address: no-reply@my-website.com
+
+
+sylius_grid:
+    drivers:
+        - doctrine/orm
+    templates:
+        action:
+            default: ":Common/Grid/Action:default.html.twig"
+            create: ":Common/Grid/Action:create.html.twig"
+            delete: ":Common/Grid/Action:delete.html.twig"
+            show: ":Common/Grid/Action:show.html.twig"
+            update: ":Common/Grid/Action:update.html.twig"
+            links: ":Common/Grid/Action:links.html.twig"
+
+        filter:
+            string: ":Common/Grid/Filter:string.html.twig"
+            boolean: ":Common/Grid/Filter:boolean.html.twig"

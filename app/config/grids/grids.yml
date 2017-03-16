@@ -1,0 +1,4 @@
+imports:
+    - { resource: 'backend/user.yml' }
+    - { resource: 'backend/page.yml' }
+    - { resource: 'backend/block.yml' }

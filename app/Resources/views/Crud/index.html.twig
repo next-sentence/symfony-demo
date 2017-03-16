@@ -1,0 +1,22 @@
+{% extends ':Backend:layout.html.twig' %}
+
+{% import ':Common/Macro:headers.html.twig' as headers %}
+
+{% set definition = resources.definition %}
+{% set data = resources.data %}
+
+{% set header = configuration.vars.header|default(metadata.applicationName~'.ui.'~metadata.pluralName) %}
+
+{% block title %}{{ header|trans }}{% endblock %}
+
+{% block header_content %}
+    {% include ':Crud/Index:_header.html.twig' %}
+{% endblock %}
+
+{% block admin_lte_breadcrumb %}
+    {% include ':Crud/Index:_breadcrumb.html.twig' %}
+{% endblock %}
+
+{% block page_content %}
+    {% include ':Crud/Index:_content.html.twig' %}
+{% endblock %}

@@ -1,0 +1,24 @@
+app_backend_index:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: app_backend_dashboard
+        permanent: true
+
+app_backend_dashboard:
+    methods: [GET]
+    path: /dashboard
+    defaults: { _controller: AppBundle:Backend/Dashboard:main }
+
+
+app_backend_user:
+    resource: "user.yml"
+
+app_backend_page:
+    resource: "page.yml"
+
+app_backend_block:
+    resource: "block.yml"
+
+app_backend_security:
+    resource: "security.yml"
