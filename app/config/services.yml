@@ -24,3 +24,8 @@ services:
         class: AppBundle\EventListener\SidebarMenuEventListener
         tags:
             - { name: kernel.event_listener, event: sbs.admin_lte.sidebar_menu, method: onShowMenu }
+
+    app.page_listener:
+        class: AppBundle\EventListener\PageListener
+        tags:
+            - { name: kernel.event_listener, event: app.page.pre_create, method: prePersist }

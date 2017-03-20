@@ -5,13 +5,20 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: AppBundle\Entity\Page
+            sorting:
+                title: asc
             fields:
                 id:
                     type: string
                     label: app.ui.id
                 title:
                     type: string
+                    sortable: ~
                     label: app.ui.title
+            filters:
+                title:
+                    type: string
+
             actions:
                 main:
                     create:

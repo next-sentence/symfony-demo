@@ -18,6 +18,7 @@ class AppKernel extends Kernel
 
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new SbS\AdminLTEBundle\SbSAdminLTEBundle(),
+            new Trsteel\CkeditorBundle\TrsteelCkeditorBundle(),
 
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle($this),

@@ -5,9 +5,9 @@ namespace AppBundle\Form\Type;
 use AppBundle\Entity\Block;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Trsteel\CkeditorBundle\Form\Type\CkeditorType;
 
 class BlockType extends AbstractResourceType
 {
@@ -21,9 +21,10 @@ class BlockType extends AbstractResourceType
                 'label' => 'type',
                 'choices' => Block::getTypeLabels(),
             ])
-            ->add('content', TextareaType::class, [
-                'label' => 'content',
-            ])
+            ->add('content', CkeditorType::class, array(
+                'transformers'                 => array('html_purifier'),
+
+            ))
         ;
     }
 

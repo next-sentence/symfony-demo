@@ -10,3 +10,4 @@ sylius_resource:
             classes:
                 model: AppBundle\Entity\Block
                 form: AppBundle\Form\Type\BlockType
+                repository: AppBundle\Doctrine\ORM\BlockRepository

@@ -14,6 +14,12 @@ services:
         tags:
             - { name: form.type, alias: app_block }
 
+    app.form.type.block_choice:
+        class: AppBundle\Form\Type\BlockChoiceType
+        arguments: ["@app.repository.block"]
+        tags:
+            - { name: form.type, alias: app_block_choice }
+
     sylius.form.type.backend_user:
         class: AppBundle\Form\Type\UserType
         arguments: ["%sylius.model.backend_user.class%", ["sylius"]]

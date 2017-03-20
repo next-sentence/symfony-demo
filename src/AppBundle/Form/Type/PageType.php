@@ -13,10 +13,6 @@ class PageType extends AbstractResourceType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $block = new Block();
-        $block->setTitle('asd');
-        $block->setType(Block::TEXT_TYPE);
-
         $builder
             ->add('title', TextType::class, [
                 'label' => 'title',
@@ -33,16 +29,9 @@ class PageType extends AbstractResourceType
             ->add('metaTitle', TextType::class, [
                 'label' => 'metaTitle',
             ])
-            ->add('blocks', CollectionType::class, [
+            ->add('blocks', BlockChoiceType::class, [
                 'label' => 'blocks',
-                'allow_add' => true,
-                'allow_delete' => true,
-                'entry_type'   => ChoiceType::class,
-                'entry_options'  => array(
-                    'choices'  => array(
-                        $block
-                    ),
-                ),
+                'multiple' => true,
             ]);
     }
 

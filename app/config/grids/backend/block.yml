@@ -12,6 +12,10 @@ sylius_grid:
                 title:
                     type: string
                     label: app.ui.title
+            filters:
+                title:
+                    type: string
+
             actions:
                 main:
                     create:

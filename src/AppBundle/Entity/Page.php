@@ -149,7 +149,7 @@ class Page implements ResourceInterface
     /**
      * @param Block[]|ArrayCollection $blocks
      */
-    public function setBlocks($blocks)
+    public function setBlocks(ArrayCollection $blocks)
     {
         $this->blocks = $blocks;
     }
