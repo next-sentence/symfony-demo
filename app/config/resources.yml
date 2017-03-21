@@ -3,7 +3,9 @@ sylius_resource:
         app.page:
             driver: doctrine/orm
             classes:
+                controller: AppBundle\Controller\PageController
                 model: AppBundle\Entity\Page
+                repository: AppBundle\Doctrine\ORM\PageRepository
                 form: AppBundle\Form\Type\PageType
         app.block:
             driver: doctrine/orm

@@ -7,9 +7,11 @@
         </id>
 
         <field name="title" column="title" type="string" />
-        <field name="route" column="route" type="string" />
+        <field name="permalink" column="permalink" type="string" >
+            <gedmo:slug fields="title" unique="true" />
+        </field>
         <field name="metaKeywords" column="meta_keywords" type="string" nullable="false" />
-        <field name="metaDescriptions" column="meta_descriptions" type="string" nullable="false" />
+        <field name="metaDescription" column="meta_description" type="string" nullable="false" />
         <field name="metaTitle" column="meta_title" type="string" nullable="false" />
 
         <field name="createdAt" column="created_at" type="datetime">

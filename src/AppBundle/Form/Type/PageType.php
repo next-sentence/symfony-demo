@@ -16,15 +16,16 @@ class PageType extends AbstractResourceType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'title',
+                'required' => true
             ])
-            ->add('route', TextType::class, [
-                'label' => 'route',
+            ->add('permalink', TextType::class, [
+                'label' => 'permalink',
             ])
             ->add('metaKeywords', TextType::class, [
                 'label' => 'metaKeywords',
             ])
-            ->add('metaDescriptions', TextType::class, [
-                'label' => 'metaDescriptions',
+            ->add('metaDescription', TextType::class, [
+                'label' => 'metaDescription',
             ])
             ->add('metaTitle', TextType::class, [
                 'label' => 'metaTitle',

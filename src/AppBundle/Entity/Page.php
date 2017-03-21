@@ -23,7 +23,7 @@ class Page implements ResourceInterface
     /**
      * @var string
      */
-    protected $route;
+    protected $permalink;
 
     /**
      * @var string
@@ -33,7 +33,7 @@ class Page implements ResourceInterface
     /**
      * @var string
      */
-    protected $metaDescriptions;
+    protected $metaDescription;
 
     /**
      * @var string
@@ -77,17 +77,17 @@ class Page implements ResourceInterface
     /**
      * @return string
      */
-    public function getRoute()
+    public function getPermalink()
     {
-        return $this->route;
+        return $this->permalink;
     }
 
     /**
-     * @param string $route
+     * @param string $permalink
      */
-    public function setRoute($route)
+    public function setPermalink($permalink)
     {
-        $this->route = $route;
+        $this->permalink = $permalink;
     }
 
     /**
@@ -109,17 +109,17 @@ class Page implements ResourceInterface
     /**
      * @return string
      */
-    public function getMetaDescriptions()
+    public function getMetaDescription()
     {
-        return $this->metaDescriptions;
+        return $this->metaDescription;
     }
 
     /**
-     * @param string $metaDescriptions
+     * @param string $metaDescription
      */
-    public function setMetaDescriptions($metaDescriptions)
+    public function setMetaDescription($metaDescription)
     {
-        $this->metaDescriptions = $metaDescriptions;
+        $this->metaDescription = $metaDescription;
     }
 
     /**

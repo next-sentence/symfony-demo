@@ -5,3 +5,13 @@ app_frontend_homepage:
 
 app_frontend_security:
     resource: "security.yml"
+
+app_frontend_page:
+    methods: [GET]
+    path: /p/{permalink}
+    defaults:
+        _controller: app.controller.page:detailsAction
+        _sylius:
+            repository:
+                method: findForDetails
+                arguments: [$permalink]
