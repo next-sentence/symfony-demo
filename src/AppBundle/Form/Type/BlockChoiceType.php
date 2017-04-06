@@ -2,13 +2,11 @@
 
 namespace AppBundle\Form\Type;
 
+use AppBundle\Entity\Page;
 use Doctrine\ORM\EntityRepository;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Symfony\Bridge\Doctrine\Form\DataTransformer\CollectionToArrayTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,15 +46,24 @@ class BlockChoiceType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        $queryBuilder = function (Options $options) {
+
+            return function (EntityRepository $er) use ($options) {
+                return $er->createQueryBuilder('o')
+                    ->where('o.page IS NULL')
+                    ->orWhere('o.page = :page')
+                    ->setParameter('page', $options['page']);
+            };
+        };
+
         $resolver
             ->setDefaults([
                 'class' => $this->repository->getClassName(),
-                'choice_label' => 'app.form.block.title',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('o')
-                        ->where('o.page IS NULL');
-                },
+                'choice_label' => 'title',
+                'page' => null,
+                'query_builder' =>$queryBuilder,
             ])
+            ->setAllowedTypes('page', ['null', Page::class])
         ;
     }
 }

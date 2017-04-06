@@ -11,7 +11,7 @@
         <field name="content" column="content" type="text" nullable="true" />
 
         <many-to-one field="page" target-entity="AppBundle\Entity\Page" inversed-by="blocks">
-            <join-column name="page_id" referenced-column-name="id" />
+            <join-column name="page_id" referenced-column-name="id" nullable="true" on-delete="SET NULL"/>
         </many-to-one>
     </entity>
 </doctrine-mapping>

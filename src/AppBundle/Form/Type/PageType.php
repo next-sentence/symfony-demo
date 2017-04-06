@@ -2,10 +2,7 @@
 
 namespace AppBundle\Form\Type;
 
-use AppBundle\Entity\Block;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -33,6 +30,7 @@ class PageType extends AbstractResourceType
             ->add('blocks', BlockChoiceType::class, [
                 'label' => 'app.form.page.blocks',
                 'multiple' => true,
+                'page' => !is_null($options['data']->getId()) ? $options['data'] : null,
             ]);
     }
 

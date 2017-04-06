@@ -23,7 +23,7 @@
 
         <one-to-many field="blocks" target-entity="AppBundle\Entity\Block" mapped-by="page">
             <cascade>
-                <cascade-all />
+                <cascade-persist />
             </cascade>
         </one-to-many>
     </entity>
