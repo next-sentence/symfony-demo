@@ -8,7 +8,7 @@ app_backend_user:
         grid: app_backend_user
         vars:
             all:
-                subheader: app.ui.user # define a translation key for your entity subheader
+                subheader: app.ui.manage_user # define a translation key for your entity subheader
             index:
                 icon: 'file image outline' # choose an icon that will be displayed next to the subheader
     type: sylius.resource

@@ -15,16 +15,16 @@ class BlockType extends AbstractResourceType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'title',
+                'label' => 'app.form.block.title',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'type',
+                'label' => 'app.form.block.type',
                 'choices' => Block::getTypeLabels(),
             ])
-            ->add('content', CkeditorType::class, array(
-                'transformers'                 => array('html_purifier'),
-
-            ))
+            ->add('content', CkeditorType::class, [
+                'label' => 'app.form.block.content',
+                'transformers' => ['html_purifier'],
+            ])
         ;
     }
 

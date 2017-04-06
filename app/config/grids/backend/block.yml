@@ -8,10 +8,16 @@ sylius_grid:
             fields:
                 id:
                     type: string
+                    sortable: ~
                     label: app.ui.id
                 title:
                     type: string
+                    sortable: ~
                     label: app.ui.title
+                type:
+                    type: string
+                    sortable: ~
+                    label: app.ui.type
             filters:
                 title:
                     type: string

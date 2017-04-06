@@ -15,23 +15,23 @@ class PageType extends AbstractResourceType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'title',
+                'label' => 'app.form.page.title',
                 'required' => true
             ])
             ->add('permalink', TextType::class, [
-                'label' => 'permalink',
+                'label' => 'app.form.page.permalink',
             ])
             ->add('metaKeywords', TextType::class, [
-                'label' => 'metaKeywords',
+                'label' => 'app.form.page.meta_keywords',
             ])
             ->add('metaDescription', TextType::class, [
-                'label' => 'metaDescription',
+                'label' => 'app.form.page.meta_description',
             ])
             ->add('metaTitle', TextType::class, [
-                'label' => 'metaTitle',
+                'label' => 'app.form.page.meta_title',
             ])
             ->add('blocks', BlockChoiceType::class, [
-                'label' => 'blocks',
+                'label' => 'app.form.page.blocks',
                 'multiple' => true,
             ]);
     }

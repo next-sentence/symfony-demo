@@ -15,16 +15,16 @@ class UserType extends BaseUserType
 
         $builder
             ->add('name', TextType::class, [
-                'label' => 'name',
+                'label' => 'sylius.form.user.name',
             ])
             ->add('info', TextType::class, [
-                'label' => 'info',
+                'label' => 'sylius.form.user.info',
             ])
             ->add('title', TextType::class, [
-                'label' => 'title',
+                'label' => 'sylius.form.user.title',
             ])
             ->add('file', FileType::class, [
-                'label' => 'avatar',
+                'label' => 'sylius.form.user.avatar',
             ]);
     }
 

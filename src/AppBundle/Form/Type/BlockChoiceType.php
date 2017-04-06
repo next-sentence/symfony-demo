@@ -51,7 +51,7 @@ class BlockChoiceType extends AbstractType
         $resolver
             ->setDefaults([
                 'class' => $this->repository->getClassName(),
-                'choice_label' => 'title',
+                'choice_label' => 'app.form.block.title',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('o')
                         ->where('o.page IS NULL');

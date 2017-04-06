@@ -11,10 +11,20 @@ sylius_grid:
                 id:
                     type: string
                     label: app.ui.id
+                permalink:
+                    type: string
+                    label: app.ui.permalink
+                    sortable: ~
                 title:
                     type: string
                     sortable: ~
                     label: app.ui.title
+                created_at:
+                    type: datetime
+                    label: app.ui.created_at
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
             filters:
                 title:
                     type: string

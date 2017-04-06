@@ -8,6 +8,6 @@ app_backend_page:
         grid: app_backend_page
         vars:
             all:
-                subheader: app.ui.user
+                subheader: app.ui.manage_page
 
     type: sylius.resource

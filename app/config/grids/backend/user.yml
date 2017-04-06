@@ -6,12 +6,36 @@ sylius_grid:
                 options:
                     class: AppBundle\Entity\User
             fields:
-                username:
+                name:
                     type: string
-                    label: sylius.ui.username
+                    label: sylius.ui.name
+                    sortable: ~
+
                 email:
                     type: string
                     label: sylius.ui.email
+                    sortable: ~
+                created_at:
+                    type: datetime
+                    label: sylius.ui.registration_date
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    sortable: ~
+                    options:
+                        template: ":Common/Grid/Field:enabled.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [email, username, name]
+                enabled:
+                    type: boolean
+                    label: sylius.ui.enabled
             actions:
                 main:
                     create:
