@@ -1,7 +1,4 @@
-<div class="ui basic segment">
-    <div class="ui buttons">
-        <button class="ui labeled icon primary button" type="submit"><i class="plus icon"></i>{{- 'sylius.ui.create'|trans -}}</button>
-        <div class="or" data-text="{{ 'sylius.ui.or'|trans }}"></div>
-        {% include ':Common/Form/Buttons:_cancel.html.twig' with {'path': paths.cancel|default(null)} %}
-    </div>
+<div class="btn-group">
+    <button class="btn btn-primary" type="submit">{{- 'sylius.ui.create'|trans -}}</button>
+    {% include ':Common/Form/Buttons:_cancel.html.twig' with {'path': paths.cancel|default(null)} %}
 </div>

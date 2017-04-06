@@ -13,15 +13,13 @@
 {% endmacro %}
 
 {% macro enabled() %}
-    <span class="ui teal label">
-        <i class="checkmark icon"></i>
+    <span class="label label-success">
         {{ 'sylius.ui.enabled'|trans }}
     </span>
 {% endmacro %}
 
 {% macro disabled() %}
-    <span class="ui red label">
-        <i class="remove icon"></i>
+    <span class="label label-danger">
         {{ 'sylius.ui.disabled'|trans }}
     </span>
 {% endmacro %}

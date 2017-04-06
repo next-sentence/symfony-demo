@@ -9,26 +9,27 @@
 {% set path = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 
 {% if definition.filters|length > 0 %}
-    <div class="ui segment">
-        <form method="get" action="{{ path }}" class="ui loadable form">
-            <div class="two fields">
+    <div class="row">
+        <form method="get" action="{{ path }}" class="form-inline">
+            <div class="col-sm-6">
             {% for filter in definition.filters if filter.enabled %}
                 {{ sylius_grid_render_filter(grid, filter) }}
 
                 {% if loop.index0 % 2 %}
                     </div>
-                    <div class="two fields">
+                    <div class="col-sm-6">
                 {% endif %}
             {% endfor %}
             </div>
-            {{ buttons.filter() }}
-            {{ buttons.resetFilters(path) }}
+            <div class="btn-group">
+                {{ buttons.filter() }}
+                {{ buttons.resetFilters(path) }}
+            </div>
         </form>
     </div>
 {% endif %}
 
 <div class="ui segment">
-    {{ pagination.simple(data) }}
     {% if data|length > 0 %}
         <table class="ui sortable stackable celled table">
             <thead>
