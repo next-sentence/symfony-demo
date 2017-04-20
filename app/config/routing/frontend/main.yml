@@ -9,6 +9,8 @@ app_frontend_security:
 app_frontend_page:
     methods: [GET]
     path: /p/{permalink}
+    requirements:
+        permalink: .+
     defaults:
         _controller: app.controller.page:detailsAction
         _sylius:

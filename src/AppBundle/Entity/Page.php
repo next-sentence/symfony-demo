@@ -44,9 +44,48 @@ class Page implements ResourceInterface
      */
     protected $blocks;
 
+    /**
+     * @var Page
+     */
+    protected $parent;
+
+    /**
+     * @var ArrayCollection|Page[]
+     */
+    protected $children;
+
+    /**
+     * @var Page
+     */
+    protected $root;
+
+    /**
+     * @var integer
+     */
+    protected $level;
+
+    /**
+     * @var integer
+     */
+    protected $left;
+
+    /**
+     * @var integer
+     */
+    protected $right;
+
+    /**
+     * @var string
+     */
+    protected $template;
+
+    /**
+     * Page constructor.
+     */
     public function __construct()
     {
         $this->blocks = new ArrayCollection();
+        $this->children = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
 
@@ -178,5 +217,142 @@ class Page implements ResourceInterface
             $this->blocks->removeElement($block);
             $block->setPage(null);
         }
+    }
+
+    /**
+     * @return Page
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param Page $parent
+     */
+    public function setParent(Page $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * @return Page[]|ArrayCollection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param Page[]|ArrayCollection $children
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+    public function hasChildrens()
+    {
+        return !$this->blocks->isEmpty();
+    }
+
+    public function hasChildren(Page $page)
+    {
+        return $this->children->contains($page);
+    }
+
+    public function addChildren(Page $page)
+    {
+        if (!$this->hasChildren($page)) {
+            $this->children->add($page);
+            $page->setParent($this);
+        }
+    }
+
+    public function removeChildren(Page $page)
+    {
+        if ($this->hasChildren($page)) {
+            $this->children->removeElement($page);
+            $page->setParent(null);
+        }
+    }
+
+    /**
+     * @return Page
+     */
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    /**
+     * @param Page $root
+     */
+    public function setRoot($root)
+    {
+        $this->root = $root;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param int $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLeft()
+    {
+        return $this->left;
+    }
+
+    /**
+     * @param int $left
+     */
+    public function setLeft($left)
+    {
+        $this->left = $left;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRight()
+    {
+        return $this->right;
+    }
+
+    /**
+     * @param int $right
+     */
+    public function setRight($right)
+    {
+        $this->right = $right;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
+    /**
+     * @param string $template
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
     }
 }

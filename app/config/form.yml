@@ -4,7 +4,7 @@ parameters:
 services:
     app.form.type.page:
         class: AppBundle\Form\Type\PageType
-        arguments: ["%app.model.page.class%", ["default"]]
+        arguments: ["%app.model.page.class%", ["default"], "@twig.loader"]
         tags:
             - { name: form.type, alias: app_page }
 
@@ -19,6 +19,12 @@ services:
         arguments: ["@app.repository.block"]
         tags:
             - { name: form.type, alias: app_block_choice }
+
+    app.form.type.page_choice:
+        class: AppBundle\Form\Type\PageChoiceType
+        arguments: ["@app.repository.page"]
+        tags:
+            - { name: form.type, alias: app_page_choice }
 
     sylius.form.type.backend_user:
         class: AppBundle\Form\Type\UserType

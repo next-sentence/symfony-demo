@@ -42,7 +42,8 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         admin_lte_skin: skin-black
-
+    paths:
+        "%kernel.root_dir%/Resources/views/Frontend/Page/templates": page_templates
 assetic:
     debug: "%kernel.debug%"
     use_controller: "%kernel.debug%"
@@ -70,6 +71,7 @@ stof_doctrine_extensions:
         default:
             timestampable: true
             sluggable: true
+            tree: true
 
 # Swiftmailer Configuration
 swiftmailer:
