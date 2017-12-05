@@ -29,22 +29,33 @@
     </div>
 {% endif %}
 
-<div class="ui segment">
-    {% if data|length > 0 %}
-        <table class="ui sortable stackable celled table">
-            <thead>
-            <tr>
-                {{ table.headers(grid, definition, app.request.attributes) }}
-            </tr>
-            </thead>
-            <tbody>
-            {% for row in data %}
-                {{ table.row(grid, definition, row) }}
-            {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        {{ messages.info('sylius.ui.no_results_to_display'|trans) }}
-    {% endif %}
-    {{ pagination.simple(data) }}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+
+                {#<h3 class="box-title">Hover Data Table</h3>#}
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                {% if data|length > 0 %}
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            {{ table.headers(grid, definition, app.request.attributes) }}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in data %}
+                            {{ table.row(grid, definition, row) }}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    {{ messages.info('sylius.ui.no_results_to_display'|trans) }}
+                {% endif %}
+                {{ pagination.simple(data) }}
+            </div>
+            <!-- /.box-body -->
+        </div>
 </div>

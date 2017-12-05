@@ -7,6 +7,8 @@ sylius_grid:
                     class: AppBundle\Entity\Page
             sorting:
                 title: asc
+            limits: [2,4,6]
+
             fields:
                 id:
                     type: string
@@ -25,15 +27,19 @@ sylius_grid:
                     sortable: ~
                     options:
                         format: d-m-Y H:i
-            filters:
-                title:
-                    type: string
+#            filters:
+#                title:
+#                    type: string
+#                id:
+#                   type: string
 
             actions:
                 main:
                     create:
                         type: create
                 item:
+                    show:
+                        type: show
                     update:
                         type: update
                     delete:

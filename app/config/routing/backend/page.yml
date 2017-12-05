@@ -3,7 +3,7 @@ app_backend_page:
         alias: app.page
         section: backend
         templates: :Crud
-        except: ['show']
+#        except: ['show']
         redirect: index
         grid: app_backend_page
         vars:

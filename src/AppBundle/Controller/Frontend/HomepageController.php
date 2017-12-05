@@ -14,8 +14,6 @@ class HomepageController extends Controller
      */
     public function mainAction(Request $request)
     {
-        $ad = '';
-
         return $this->render('Frontend/Homepage/main.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);

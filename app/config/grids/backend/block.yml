@@ -18,9 +18,9 @@ sylius_grid:
                     type: string
                     sortable: ~
                     label: app.ui.type
-            filters:
-                title:
-                    type: string
+#            filters:
+#                title:
+#                    type: string
 
             actions:
                 main:

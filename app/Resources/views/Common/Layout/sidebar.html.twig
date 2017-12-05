@@ -1,44 +1,101 @@
+{% import "SbSAdminLTEBundle:Layout:main_macros.html.twig" as macros %}
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>{% block title %}Sylius{% endblock %}</title>
-
+    <title>{% block title %}Admin{% endblock %}</title>
+    {# Tell the browser to be responsive to screen width. #}
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
-    {% block metatags %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% block corestyles %}
+        {% stylesheets output='css/admin-lte-bundle.min.css' filter="cssrewrite"
+        "components/bootstrap/css/bootstrap.min.css"
+        "components/font-awesome/css/font-awesome.min.css"
+        "bundles/sbsadminlte/styles/AdminLTE.min.css"
+        "bundles/sbsadminlte/styles/skins/_all-skins.min.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
     {% endblock %}
-
-    {% block stylesheets %}
+    {# Use standard twig block stylesheets to include CSS that is used on single page. #}
+    {% block stylesheets %}{% endblock %}
+    {% block corejs %}
+        {% javascripts output='js/admin-lte-bundle.min.js'
+        "components/jquery/jquery.min.js"
+        "components/jquery-ui/jquery-ui.min.js"
+        "components/bootstrap/js/bootstrap.min.js"
+        "bundles/sbsadminlte/plugins/slimScroll/jquery.slimscroll.min.js"
+        "bundles/sbsadminlte/plugins/fastclick/fastclick.min.js"
+        "bundles/sbsadminlte/js/AdminLTE.min.js" %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
     {% endblock %}
+    {% block javascripts_head %}{% endblock %}
 </head>
-
-<body>
-<div class="ui sidebar vertical inverted menu" id="sidebar">
-    {% block sidebar %}
-    {% endblock %}
-</div>
-<div class="pusher">
-    <div class="ui fixed inverted menu">
-        {% block topbar %}
+<body class="hold-transition {{ admin_lte_skin|default('skin-blue') }} fixed sidebar-mini {{ sidebar_collapse(app.session) }}">
+{% block inner_body %}
+    <div class="wrapper">
+        {% block admin_lte_header %}
+            <header class="main-header">
+                {% block admin_lte_logo %}
+                    <a href="#" class="logo">
+                        <span class="logo-mini"><b>A</b>LT</span>
+                        <span class="logo-lg"><b>Admin</b>LTE</span>
+                    </a>
+                {% endblock %}
+                {# Header Navbar: style can be found in header.less #}
+                <nav class="navbar navbar-static-top" role="navigation">
+                    {{ sidebar_toggle_button() }}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                {% block admin_lte_navbar %}
+                                    {{ nav_bar_notifications() }}
+                                    {{ nav_bar_tasks() }}
+                                    {{ nav_bar_user_account() }}
+                                {% endblock %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </nav>
+            </header>
         {% endblock %}
-    </div>
-    <div class="full height" id="wrapper">
-        <div id="content">
-            {% include ':Common:_flashes.html.twig' %}
-
+        {# Left side column. Contains the logo and sidebar: style can be found in sidebar.less #}
+        <aside class="main-sidebar sidebar-offcanvas">
+            <section class="sidebar">
+                {% block admin_lte_sidebar %}
+                    {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {{ sidebar_menu(app.request) }}
+                    {% endif %}
+                {% endblock %}
+            </section>
+        </aside>
+        {# Content wrapper. Contains the content of the page. #}
+        <div class="content-wrapper">
             {% block content %}
+                <section class="content-header">
+                    {% block header_content %}
+                        {{ macros.page_header("Page Title", "Description of Page") }}
+                    {% endblock %}
+                    {% block admin_lte_breadcrumb %}{% endblock %}
+                </section>
+                <section class="content">
+                    {{ include("SbSAdminLTEBundle:Layout:flash_message.html.twig") }}
+                    {% block page_content %}{% endblock %}
+                </section>
             {% endblock %}
         </div>
+        {% block admin_lte_footer %}
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs"><b>Version</b> 1.0.0</div>
+                <strong>Copyright &copy; {{ "now"|date("Y") }} <a href="{{ path('app_frontend_homepage') }}">Homepage</a>.</strong>
+                All rights reserved.
+            </footer>ts reserved.
+            </footer>
+        {% endblock %}
     </div>
-</div>
-
-{% include ':Common/Modal:_confirmation.html.twig' %}
-
-{% block javascripts %}
 {% endblock %}
+{# Use standard twig block javascripts to include JS that is used on single page. #}
+{% block javascripts %}{% endblock %}
 </body>
 </html>

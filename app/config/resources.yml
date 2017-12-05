@@ -1,4 +1,9 @@
 sylius_resource:
+#    settings:
+#        paginate: 2
+#        limit: 2
+#        allowed_paginate: true
+#        default_page_size: 2
     resources:
         app.page:
             driver: doctrine/orm
